@@ -1,0 +1,25 @@
+html {
+	background-color: whitesmoke;
+	font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif; 
+	color: whitesmoke;
+}
+
+.fusebox {
+	position: absolute;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto;
+	gap: 20px;
+	background-color: #464646;
+	padding: 50px;
+	width: 80vw;
+	height: 80vh;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	box-shadow: inset 1em 1em 0.2em 0 rgba(0,0,0,0.5), inset -1em -1em 0.2em 0 rgba(0,0,0,0.5);
+}
+
+.grid {
+	background-color: #202b41;
+}
