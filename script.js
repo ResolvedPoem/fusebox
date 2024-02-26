@@ -29,7 +29,7 @@ function lightsOutSwap(event) {
 	Array.from(allGrid).forEach(function(gridSpot){
 		let gridLocation = gridSpot.id.split(`,`);
 	    gridSpot.removeEventListener("click", triggerClick);
-	    if(!(gridLocation[1] == `0` || gridLocation[1] == `6`)) {
+	    if(!(gridLocation[0] == `4` || gridLocation[1] == `6`)) {
 		    gridSpot.addEventListener("click", lightsOut);
 			var random_boolean = Math.random() < 0.5;
 			if(random_boolean) {
@@ -56,24 +56,26 @@ function lightsOut(event) {
 	let rightDiv = document.getElementById(`${clickedGrid[0]},${clickedGrid[1]+1}`);
 	swapColor(clickedDiv);
 	swapColor(upDiv);
-	swapColor(downDiv);
-	if(!(leftDiv.id.split(',')[1] == `0` || leftDiv.id.split(',')[1] == `6`)) {
-		swapColor(leftDiv);
-	}
-		if(!(rightDiv.id.split(',')[1] == `0` || rightDiv.id.split(',')[1] == `6`)) {
+	swapColor(leftDiv);
+	if(!(rightDiv.id.split(',')[1] == `6`)) {
 		swapColor(rightDiv);
+	}
+	if(!(downDiv.id.split(',')[0] == `4`)) {
+		swapColor(downDiv);
 	}
 }
 
 function longsOut(event) {
 	let clickedDiv = event.target;
 	let clickedGrid = clickedDiv.id.split(`,`);
-	console.log(clickedGrid);
 	clickedGrid[0] = Number(clickedGrid[0]);
-	console.log(clickedGrid);
-	if(clickedGrid[1] == `0`) {
-		for(let i = 1; i < Math.ceil(columns/2); i++) {
-			let div = document.getElementById(`${clickedGrid[0]},${i}`);
+	if(clickedGrid[0] == `4`) {
+		if(clickedGrid[1] == `6`) {
+			let div = document.getElementById(`${3},${5}`);
+			return swapColor(div);			
+		}
+		for(let i = 3; i >= Math.ceil(rows/2)-2; i--) {
+			let div = document.getElementById(`${i},${clickedGrid[1]}`);
 			swapColor(div);
 		}
 	} else {
